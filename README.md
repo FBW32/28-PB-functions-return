@@ -51,10 +51,10 @@ Examples:
 * calculateBaseToExponent(3, 3) ➞ 27
 
 **7. Dog Years.**
-Create a function which calculates how old a dog is in doggie years. The function should accept one argument that is the puppy's age in human years. Calculate the dog's age in dog years based on the calculation of 1 human year = 7 dog years. 
+Create a function which calculates how old a dog is in human years. The function should accept one argument that is the puppy's age in doggie years. Calculate the dog's age in human years based on the calculation of 1 doggie year = 7 human years.
 
 i.e. 
- dogAge(4) ➞ "Your doggo is 28 years old in dog years!"
+ dogAge(4) ➞ "Your doggo is 28 years old in human years!"
 
 **8. A Lifetime Supply...**
 Create a function to calculate how much you'll actually be getting for a lifetime supply of your favourite snack. The function should accept two arguments: age and amount per day. The function should calculate the amount that will be consumed for the rest of your life given a constant max age. **Bonus** Accept floating point values for amount per day and round the result. 
