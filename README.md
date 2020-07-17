@@ -54,7 +54,7 @@ Examples:
 Create a function which calculates how old a dog is in dog years. The function should accept one argument that is the puppy's age in human years. Calculate the dog's age in dog years based on the calculation of 1 human year = 7 dog years.
 
 i.e.
- calcAgeInDogYears(4) ➞ "Your doggo is 28 years old in dog years!"
+ dogAge(4) ➞ "Your doggo is 28 years old in human years!"
 
 **8. A Lifetime Supply...**
 Create a function to calculate how much you'll actually be getting for a lifetime supply of your favourite snack. The function should accept two arguments: age and amount per day. The function should calculate the amount that will be consumed for the rest of your life given a constant max age. **Bonus** Accept floating point values for amount per day and round the result.
@@ -83,6 +83,7 @@ Create a function that determines whether or not it's possible to split a pie fa
 
 Examples:
 * isEqualSlices(11, 5, 3) ➞ false // 5 people x 3 slices each = 15 slices > 11 slices
+
 
 * isEqualSlices(8, 3, 2) ➞ true
 * isEqualSlices(8, 3, 3) ➞ false
@@ -113,14 +114,20 @@ Examples:
 * isPrime(10) ➞ false
 
 **13. Validate Email.**
-Create a function that takes a string, checks if it's a valid email address, and then accordingly returns either true or false.
+Create a function that takes a string, checks for valid email address syntax, and then returns either true or false accordingly.
 
-* The string must contain an "@" character.
-* The string must contain a "." character.
-* The "@" must have at least one character in front of it.
-* e.g. "john@example.com" is valid while "@example.com" is invalid.
+NOTE: email syntax is more complicated than you might think (see https://en.wikipedia.org/wiki/Email_address#Syntax), so we do not expect you to cover all cases! Just work your way through the below simplified validation criteria:
+
+* The string must contain exactly one "@" character.
+* The string must contain at least one "." character.
 * The "." and the "@" must be in the appropriate places.
+* e.g. "." cannot be the last character.
+* e.g. "." cannot be directly before or after "@"
+* e.g. there cannot be consecutive "." characters
+* e.g. "@" must have at least one character in front of it.
+* e.g. "j@example.com" is valid while "@example.com" is invalid.
 * e.g. "john.smith@com" is invalid while "john.smith@email.com" is valid.
+* e.g. "john..smith@email.com" and "john.@email.com" and "john@.email.com" are all invalid.
 
 **Good Luck & Enjoy :)**
 
