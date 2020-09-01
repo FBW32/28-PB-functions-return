@@ -162,16 +162,34 @@ function calcLifetimeSupply(ageQ8, amountQ8, snack1) {
     consumption = (maxAge - ageQ8) * (daysInAYear * amountQ8);
     console.log(`You will need ${consumption} of ${snack1} (${amountQ8} a day) to last you till the age of 80.`)
 }
-calcLifetimeSupply(25, 2, "bars of chocolate")
-calcLifetimeSupply(40, 3, "packets of crisps")
+calcLifetimeSupply(25, 2, "bars of chocolate");
+// 
+calcLifetimeSupply(40, 3, "packets of crisps");
+// 
 // i.e.
 // calcLifetimeSupply(25, 2) ➞ "You will need 40,150 bars of chocolate (2 a day) to last you till the age of 80."
 // calcLifetimeSupply(40, 3) ➞ "You will need 43,800 packets of crisps  (3 a day) to last you till the age of 80."
 
 
 
+console.log("")
+console.log("QUESTION 9: Whree's Waldo?")
 // **9. Where's Waldo?**
 // Create a function that takes a string and returns true if Waldo is found, and false if he's not.
+
+function isWaldoHere(stringQ9) {
+    if ((stringQ9 === "I found you Waldo!") || (stringQ9 === "waldo is here")) {
+        console.log(true)
+    }
+    else {
+        console.log(false)
+    }
+}
+isWaldoHere("is there wal here ?");     // false
+isWaldoHere("I found you Waldo!");      // true
+isWaldoHere("is wally here?");          // false
+isWaldoHere("waldo is here");           // true
+
 
 // Examples:
 // * isWaldoHere("is there wal here ?") ➞ false
@@ -179,6 +197,10 @@ calcLifetimeSupply(40, 3, "packets of crisps")
 // * isWaldoHere("is wally here?") ➞ false
 // * isWaldoHere("waldo is here") ➞ true
 
+
+
+console.log("")
+console.log("QUESTION 10: Pie")
 // **10. Pie.**
 // Create a function that determines whether or not it's possible to split a pie fairly given these three parameters:
 
@@ -186,14 +208,28 @@ calcLifetimeSupply(40, 3, "packets of crisps")
 // * Number of recipients.
 // * How many slices each person gets.
 
+function isEqualSlices(totalSlices, recipientNumber, slicesEach) {
+    if (totalSlices >= (recipientNumber * slicesEach)) {
+        console.log(`True! ${totalSlices} can be divided fairly with ${recipientNumber} people given ${slicesEach} each!`)
+    }
+    else {
+        console.log(`False! ${totalSlices} can NOT be divided fairly with ${recipientNumber} people given ${slicesEach} each!`)
+    }
+}
+isEqualSlices(11, 5, 3);    // False! 11 can NOT be divided fairly with 5 people given 3 each!
+isEqualSlices(8, 3, 2);     // True! 8 can be divided fairly with 3 people given 2 each!
+isEqualSlices(8, 3, 3);     // False! 8 can NOT be divided fairly with 3 people given 3 each!
+isEqualSlices(24, 12, 2);   // True! 24 can be divided fairly with 12 people given 2 each!
+
 // Examples:
 // * isEqualSlices(11, 5, 3) ➞ false // 5 people x 3 slices each = 15 slices > 11 slices
-
-
 // * isEqualSlices(8, 3, 2) ➞ true
 // * isEqualSlices(8, 3, 3) ➞ false
 // * isEqualSlices(24, 12, 2) ➞ true
 
+
+console.log("")
+console.log("QUESTION 11: XO")
 // **11. XO**
 // Create a function that takes a string, checks if it has the same number of 'x's and 'o's and returns either true or false.
 
@@ -203,6 +239,42 @@ calcLifetimeSupply(40, 3, "packets of crisps")
 // * The string can contain any character.
 // * When neither an x nor an o is in the string, return true.
 
+// INPUTS
+// string           --> function input
+// string.length    --> for loop input
+// string[index]    --> if else input
+
+// OUTPUTS 
+// true/false       --> Boolean output
+// counter xX       --> number of Xs (case sensitive)
+// counter oO       --> number of Os (case sensitive)
+
+function isEqualNumXandO(XandOs) {
+    let countOs = 0;
+    let countXs = 0;
+    for (i = 0; i <= XandOs.length; i++) {
+        if ((XandOs[i] === "o") || XandOs[i] === "O") {
+            countOs += 1
+        }
+        else if ((XandOs[i] === "x") || XandOs[i] === "X") {
+            countXs += 1
+        }
+        else {
+        }
+    }
+    if (countOs === countXs) {
+        console.log(true)
+    }
+    else {
+        console.log(false)
+    }
+}
+isEqualNumXandO("ooxx");    // true
+isEqualNumXandO("xooxx");   // false
+isEqualNumXandO("ooxXm");   // true
+isEqualNumXandO("zpzpzpp"); // true
+isEqualNumXandO("zzoo");    // false
+
 // Examples:
 // * isEqualNumXandO("ooxx") ➞ true
 // * isEqualNumXandO("xooxx") ➞ false
@@ -210,6 +282,10 @@ calcLifetimeSupply(40, 3, "packets of crisps")
 // * isEqualNumXandO("zpzpzpp") ➞ true (returns true if no x and o)
 // * isEqualNumXandO("zzoo") ➞ false
 
+
+
+console.log("")
+console.log("QUESTION 12: isPrime?")
 // **12. isPrime?**
 // Create a function that returns true if a number is prime and false if it's not. **NB:** a prime number is any positive integer *greater than 1*, which is *only evenly divisible by two divisors: itself and 1*. The first ten prime numbers are 2, 3, 5, 7, 11, 13, 17, 19, 23 and 29.
 
@@ -217,6 +293,35 @@ calcLifetimeSupply(40, 3, "packets of crisps")
 // * isPrime(7) ➞ true
 // * isPrime(9) ➞ false
 // * isPrime(10) ➞ false
+
+// Break it down! ---> what is a prime?
+// less than 2 is not a prime
+// 2 is a special prime number
+// only divisible by 1 and itself
+// if it is divisable by any other number, it is not a prime!
+
+
+function isPrime(Q9numberInput) {
+    if (Q9numberInput < 2) {
+        `Is ${Q9numberInput} a prime? ---> ` + false;
+    }
+    else if (Q9numberInput === 2) {
+        return `Is ${Q9numberInput} a prime? ---> ` + true + `, but I am a special prime!`;
+    }
+    else {
+        for (let i = 2; i < Q9numberInput; i++) {
+            if (Q9numberInput % i === 0) {
+                return `Is ${Q9numberInput} a prime? ---> ` + false;
+            }
+        }
+        return `Is ${Q9numberInput} a prime? ---> ` + true;
+    }
+}
+console.log(isPrime(2))
+console.log(isPrime(7))
+console.log(isPrime(9))
+console.log(isPrime(10))
+
 
 // **13. Validate Email.**
 // Create a function that takes a string, checks for valid email address syntax, and then returns either true or false accordingly.
