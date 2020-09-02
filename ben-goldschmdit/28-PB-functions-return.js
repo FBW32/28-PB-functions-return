@@ -323,21 +323,148 @@ console.log(isPrime(9))
 console.log(isPrime(10))
 
 
+
+
+
+
+console.log("")
+console.log("QUESTION 13: valid eMail??")
 // **13. Validate Email.**
 // Create a function that takes a string, checks for valid email address syntax, and then returns either true or false accordingly.
 
-// NOTE: email syntax is more complicated than you might think (see https://en.wikipedia.org/wiki/Email_address#Syntax), so we do not expect you to cover all cases! Just work your way through the below simplified validation criteria:
+let countAtSym = 0;
+let countPeriod = 0;
+let countConsecutives = 0;
+let countPeriodBetween = 0;
+let findAtIndex;
+let findPeriod;
+function validEmail(emailInput) {
+    findAtIndex = emailInput.indexOf("@")
+    // for loops
+    for (i = 0; i < emailInput.length; i++) {
+        if (emailInput[i] === "@") {
+            countAtSym += 1;
+        }
+        else if (emailInput[i] === ".") {
+            countPeriod += 1
+            findPeriod = emailInput.indexOf(".")
+            if (("." === emailInput[i + 1])) {
+                countConsecutives += 1;
+            }
+        }
+    };
 
-// * The string must contain exactly one "@" character.
-// * The string must contain at least one "." character.
-// * The "." and the "@" must be in the appropriate places.
-// * e.g. "." cannot be the last character.
-// * e.g. "." cannot be directly before or after "@"
-// * e.g. there cannot be consecutive "." characters
-// * e.g. "@" must have at least one character in front of it.
+
+    // console logs
+    // @ count
+    console.log(`The email address has ${countAtSym} @ symbol.`);
+    if (countAtSym > 1) {
+        console.log("EMAIL DENIED! The string must contain exactly one(1) @ character.")
+    }
+    else {
+        console.log("CONFIRMED! One(1) @ symbol detected!")
+
+        // Minimum "." count
+        console.log(`The email address has ${countPeriod} period/s.`);
+        if (countPeriod < 1) {
+            console.log("EMAIL DENIED! The email must contain a minimum of one(1) . period!")
+        }
+        else {
+            console.log("CONFIRMED! Minimum one(1) . period detected!")
+
+
+            // @ and . in appropriate places 
+
+            for (g = findAtIndex; g < emailInput.length; g++) {
+                if (emailInput[g] === ".") {
+                    countPeriodBetween += 1;
+                }
+            };
+            console.log(countPeriodBetween + " period/s after the @ symbol")
+            if (countPeriodBetween === 0) {
+                console.log("EMAIL DENIED! The string must have . and @ in appropriate places! i.e. @ must have at least one period after it!")
+            }
+            else {
+                console.log("CONFIRMED! Minimum one(1) . period after @ detected!")
+
+                // "." no last position
+                console.log("Period at the end of email? " + ((emailInput[emailInput.length - 1]) === "."))
+                if ((emailInput[emailInput.length - 1]) === ".") {
+                    console.log("EMAIL DENIED! A period '.' cannot be the last character")
+                }
+                else {
+                    console.log("CONFIRMED! No period at the end of the email detected!")
+
+                    // "." cannot be directly before or after "@"
+
+                    console.log("The index of @ is " + findAtIndex)
+                    if ("." === (emailInput[findAtIndex + 1])) {
+                        console.log("EMAIL DENIED! A . (period) cannot be directly after @")
+                    }
+                    else if ("." === (emailInput[findAtIndex - 1])) {
+                        console.log("EMAIL DENIED! A . (period) cannot be directly before @")
+                    }
+                    else {
+                        console.log("CONFIRMED! No period before or after @!")
+
+                        //
+                        console.log("Number of consective . (periods) = " + countConsecutives)
+                        if (countConsecutives > 0) {
+                            console.log("EMAIL DENIED! There cannot be consecutive . characters")
+                        }
+                        else {
+                            console.log("CONFIRMED! There are no consecutive . characters!")
+
+                            // "@" must have at least one character in front of it.
+                            if (emailInput[0] === "@") {
+                                console.log("EMAIL DENIED! @ Must have at least one character in front of it")
+                            }
+                            else {
+                                console.log("EMAIL CONFIRMED! All criterion were met!")
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+    }
+
+}
+validEmail("@example.com");
+
+// 7  * e.g. "@" must have at least one character in front of it.
+        // if (index[0] === "@") {console.log(""@" must have at least one character in front of it.")}
+
 // * e.g. "j@example.com" is valid while "@example.com" is invalid.
 // * e.g. "john.smith@com" is invalid while "john.smith@email.com" is valid.
 // * e.g. "john..smith@email.com" and "john.@email.com" and "john@.email.com" are all invalid.
 
 // **Good Luck & Enjoy :)**
 
+
+
+
+// COMPLETED ASPECTS
+
+// NOTE: email syntax is more complicated than you might think (see https://en.wikipedia.org/wiki/Email_address#Syntax), so we do not expect you to cover all cases! Just work your way through the below simplified validation criteria:
+
+
+// 1 * The string must contain exactly one "@" character.
+        // if (countAtSym !== 1) {console.log("The string must contain exactly one "@" character.")}
+
+// 2 * The string must contain at least one "." character. 
+        // if (countPeriod < 1) {console.log("The string must contain at least one '.' character")}
+
+// 3 * The "." and the "@" must be in the appropriate places.
+        // at least one period between @ and the end of the email
+
+// 4 * e.g. "." cannot be the last character.
+        // if ((email[email.length]) === ".") {console.log("A period '.' cannot be the last character")};        
+
+// 5  * e.g. "." cannot be directly before or after "@"
+        // if (("." === (index[@] + 1)) || ("." === (index[@] - 1))) {"." cannot be directly before or after "@"}
+
+// 6  * e.g. there cannot be consecutive "." characters
+        // if (index[i] === (index[i] + 1)) {console.log("There cannot be consecutive "." characters")}
